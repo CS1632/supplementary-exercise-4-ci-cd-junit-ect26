@@ -59,17 +59,3 @@ jobs:
     - name: Update dependency graph
       uses: advanced-security/maven-dependency-submission-action@v2
 
-Alternatively, you could have just created and committed the file ".github/workflows/maven-ci.yml" and it would have had the same effect. Now go ahead and click on "Actions" and you will see the Maven CI workflow created and already running! Soon, it will show a failure:
-
-Maven CI workflow failure
-
-We will get to the failure soon, but first let's try to understand why the workflow was triggered without you manually running it. Note the phrase "Maven CI #1: Commit 8e12112 pushed by wonsunahn" below the commit message "Create maven-ci.yml". It is clear that this workflow was triggered due to a pushed commit. These lines at the top of maven-ci.yml file are what automatically triggered the workflow on a push:
-
-# Triggers manually or on push or pull request on the main branch
-# (in other words, on a code integration event.)
-on:
-  workflow_dispatch:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
